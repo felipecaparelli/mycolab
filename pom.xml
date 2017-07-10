@@ -3,10 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.caparelli</groupId>
 	<artifactId>mycolab</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>MyColab JSF</name>
-	<description>Projeto JSF para cadastro de colaboradores</description>
+	<description>Projeto JSF para gestão de colaboradores</description>
 
 	<dependencies>
 
