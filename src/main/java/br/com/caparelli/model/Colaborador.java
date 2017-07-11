@@ -34,8 +34,12 @@ public class Colaborador implements Serializable {
 	private Integer id;
 	private String nome;
 
-	@OneToOne(fetch=FetchType.LAZY)
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cargo_id")
 	private Cargo cargo;
+
+	@OneToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="setor_id")
+	private Setor setor;
 
 }

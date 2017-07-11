@@ -4,6 +4,7 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>MyColab - Colaboradores</title>
@@ -29,21 +30,21 @@
 					    	<h2 class="form-signin-heading">Colaboradores</h2>
 					    </b:column>
 					    <b:column span="4">
-					    	<b:commandButton look="success btn-block" value="Adicionar" icon="plus" size="sm"/>
+					    	<b:commandButton look="info btn-block" value="Adicionar" icon="plus" size="sm"/>
 					    </b:column>
 					</b:row>
 					<b:row>
 					    <b:column span="12">
 					    	<b:inputText id="busca" placeholder="Busque pelo nome ou cargo..." value="#{indexView.busca}">
 						        <f:facet name="append">
-						            <b:commandButton look="success" ajax="true" update="lista"  icon="search" icon-align="right" />
+						            <b:commandButton look="info" ajax="true" update="lista"  icon="search" icon-align="right" />
 						        </f:facet>
 						    </b:inputText>
 					    </b:column>
 					</b:row>
 				</f:facet>
 				
-				<p:dataGrid var="item" value="#{indexView.lista}" columns="2" layout="grid" id="colab">
+				<p:dataGrid var="item" value="#{indexView.lista}" columns="2" layout="grid" id="lista" emptyMessage="Nenhum registro encontrado">
 			 
 			        <p:panel header="#{car.id}" style="text-align:center">
 			        	<b:row>
