@@ -3,42 +3,52 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>br.com.caparelli</groupId>
 	<artifactId>mycolab</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<packaging>war</packaging>
 	<name>MyColab JSF</name>
 	<description>Projeto JSF para cadastro de colaboradores</description>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<servlet.version>3.1.0</servlet.version>
+		<jsf.version>2.2.8</jsf.version>
+	</properties>
 
 	<dependencies>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>javax.enterprise</groupId>
 			<artifactId>cdi-api</artifactId>
 			<version>1.2</version>
-		</dependency>
+		</dependency>-->
 
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
+			<scope>provided</scope>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>3.0.1</version>
-		</dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <scope>provided</scope>
+        </dependency>
 
 		<!-- JPA -->
 		<dependency>
             <groupId>org.eclipse.persistence</groupId>
             <artifactId>javax.persistence</artifactId>
             <version>2.0.0</version>
+			<scope>provided</scope>
         </dependency>
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.2.8.Final</version>
+			<scope>provided</scope>
         </dependency>
         <!-- mysql driver -->
         <dependency>
@@ -51,24 +61,34 @@
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-api</artifactId>
-			<version>2.2.2</version>
+			<version>${jsf.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.faces</groupId>
 			<artifactId>jsf-impl</artifactId>
-			<version>2.2.2</version>
+			<version>${jsf.version}</version>
+			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+		    <groupId>net.bootsfaces</groupId>
+		    <artifactId>bootsfaces</artifactId>
+		    <version>1.0.1</version>
+		    <scope>compile</scope>
+		</dependency>
 		<dependency>
 	        <groupId>org.primefaces</groupId>
 	        <artifactId>primefaces</artifactId>
 	        <version>6.1</version>
 	    </dependency>
 		<dependency>
-			<groupId>org.primefaces.themes</groupId>
+		    <groupId>org.primefaces.extensions</groupId>
 			<artifactId>all-themes</artifactId>
-			<version>1.0.10</version>
+			<version>1.0.8</version>
+		    <type>pom</type>
 		</dependency>
+
 		<!-- file upload -->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
@@ -81,9 +101,23 @@
 	    <repository>
 	        <id>prime-repo</id>
 	        <name>PrimeFaces Maven Repository</name>
-	        <url>http://repository.primefaces.org</url>
+	        <url>https://repository.primefaces.org</url>
 	        <layout>default</layout>
 	    </repository>
 	</repositories>
+	
+	<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>3.6.1</version>
+			<configuration>
+				<source>1.7</source>
+				<target>1.7</target>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 
 </project>
