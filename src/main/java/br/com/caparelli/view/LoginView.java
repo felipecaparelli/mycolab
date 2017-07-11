@@ -2,6 +2,7 @@ package br.com.caparelli.view;
 
 import java.io.Serializable;
 
+import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -34,6 +35,7 @@ public class LoginView implements Serializable {
 	private String message;
 
 	//TODO incluir CDI
+	@EJB
 	private UsuarioDAO loginDAO;
 
 	/**

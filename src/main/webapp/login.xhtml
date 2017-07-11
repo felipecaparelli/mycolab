@@ -18,19 +18,29 @@
     <h:body style="padding-top: 60px; background-color: #add;">
         <b:container>
             <h:form styleClass="form-signin" prependId="false">
-                <h2 class="form-signin-heading">Entrar</h2>
-                <b:inputText id="username" placeholder="Usuário" value="#{loginView.user}">
+		
+			<b:panel look="primary" collapsible="false">
+				
+				<f:facet name="heading">
+					<!--<h:outputText value="Entrar" />-->
+					<h2 class="form-signin-heading">Entrar</h2>
+				</f:facet>
+				
+				<b:inputText id="username" placeholder="Usuário" value="#{loginView.username}">
                     <f:facet name="prepend">
                         <b:icon name="user" />
                     </f:facet>
                 </b:inputText>
-                <b:inputText id="password" placeholder="Senha" type="password" value="#{loginView.pwd}">
+                <b:inputText id="password" placeholder="Senha" type="password" value="#{loginView.password}">
                     <f:facet name="prepend">
                         <b:iconAwesome name="key" />
                     </f:facet>
                 </b:inputText>
+				
                 <b:selectBooleanCheckbox value="true" caption="lembrar-me"/>
-                <b:commandButton action="#{loginView.login}" look="primary btn-block" value="Entrar" icon="log-in" size="lg"/>
+                <b:commandButton action="#{loginView.login}" look="success btn-block" value="Entrar" icon="log-in" size="lg"/>
+				
+			</b:panel>
             </h:form>
         </b:container>
     </h:body>

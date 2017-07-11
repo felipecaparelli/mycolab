@@ -25,7 +25,7 @@ import br.com.caparelli.util.SessionUtils;
  * @date 10 de jul de 2017
  *
  */
-@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.xhtml" })
+@WebFilter(filterName = "AuthFilter", urlPatterns = { "*.jsf" })
 public class AuthorizationFilter implements Filter {
 	public AuthorizationFilter() {
 	}

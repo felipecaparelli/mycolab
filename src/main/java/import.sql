@@ -1,0 +1,1 @@
+INSERT INTO USUARIO (id, username, password) VALUES (1, 'admin', '123456');

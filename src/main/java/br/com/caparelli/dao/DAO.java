@@ -6,7 +6,12 @@ import org.hibernate.Session;
 
 /**
  *
- * @author LC5257777
+ * <b>Definicao</b>: Interface gen\u00e9rica para DAOs.
+ *
+ * <br><h1>Projeto:MyColab JSF</h1><br>
+ *
+ * @author 	Felipe Caparelli
+ * @date	11 de jul de 2017
  *
  * @param <T>
  */
