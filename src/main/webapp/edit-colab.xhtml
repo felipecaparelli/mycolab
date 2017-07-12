@@ -5,10 +5,6 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<f:metadata>
-        <f:viewParam name="id" value="#{detalheColaboradorView.colaboradorId}" />
-        <f:event type="preRenderView" listener="#{detalheColaboradorView.init}" />
-    </f:metadata>
 <h:body>
 	<ui:composition
 		template="/WEB-INF/templates/template-application.xhtml">
@@ -20,19 +16,15 @@
 					<f:facet name="heading">
 						<b:row>
 							<b:column span="12" styleClass="right">
-								<b:button outcome="editar" icon-awesome="pencil">
-							        <f:param name="id" value="#{detalheColaboradorView.colaborador.id}" />
-							    </b:button>
+							    <b:commandButton look="success" icon="ok" icon-align="right" value="#{msg.salvar}" />
 							</b:column>
 						</b:row>
 					</f:facet>
 
-					TODO carregar competencias e permitir cadastrar ()
+					TODO carregar competencias
 					
-					TODO carregar contatos e permitir cadastrar
+					TODO carregar contatos
 					
-					
-
 				</b:panel>
 
 				<p:growl id="growl" life="2000" />

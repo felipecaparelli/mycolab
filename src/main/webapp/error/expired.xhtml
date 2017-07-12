@@ -1,0 +1,8 @@
+<ui:composition template="/WEB-INF/templates/template-error.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+    <ui:define name="contentTitle">Sinto muito... Sua sess&atilde;o expirou!</ui:define>
+    <ui:define name="errorContent">
+        <p><a href="#{requestScope['javax.servlet.error.request_uri']}">Volte a p&aacute;gina inicial.</a></p>
+    </ui:define>
+</ui:composition>

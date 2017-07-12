@@ -10,6 +10,7 @@ import javax.faces.bean.ViewScoped;
 
 import br.com.caparelli.bo.ColaboradorBO;
 import br.com.caparelli.dto.ColaboradorDTO;
+import br.com.caparelli.util.SessionUtils;
 
 /**
  * <b>Definicao</b>: View da tela index.xhtml
@@ -37,6 +38,18 @@ public class IndexView implements Serializable {
 	@PostConstruct
 	public void init() {
 		this.lista = colaboradorBO.list();
+	}
+
+	/**
+	 * Finaliza a sess\u00e3o do usu\u00e1rio logado.
+	 *
+	 * @return action para a tela de login
+	 */
+	public String logout() {
+
+		SessionUtils.getSession().invalidate();
+
+		return "login";
 	}
 
 	/**

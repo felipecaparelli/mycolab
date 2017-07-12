@@ -60,4 +60,8 @@ public class Colaborador implements Serializable {
 	@JoinColumn(name="setor_id")
 	private Setor setor;
 
+
+	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL)
+	private List<ContatoColaborador> contatos;
+
 }

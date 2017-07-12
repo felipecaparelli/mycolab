@@ -15,7 +15,7 @@ import br.com.caparelli.model.Colaborador;
  *
  */
 @Stateless
-public class ColaboradorDAOImpl extends DAOImpl<Colaborador> implements ColaboradorDAO {
+public class ColaboradorDAOImpl extends DAOImpl<Colaborador, Integer> implements ColaboradorDAO {
 
 	private static final long serialVersionUID = -2904821110575520208L;
 

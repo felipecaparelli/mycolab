@@ -15,7 +15,7 @@ import org.hibernate.Session;
  *
  * @param <T>
  */
-public interface DAO<T> {
+public interface DAO<T, V> {
 
 	/**
 	 * Retorna o DelegateSession do Hibernate
@@ -25,7 +25,7 @@ public interface DAO<T> {
 
 	T update(T entity);
 	T save(T entity);
-	T find(Long id);
+	T find(V id);
 	List<T> list();
 	void remove(T entity);
 	void flush();

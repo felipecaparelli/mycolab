@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/WEB-INF/templates/template-error.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:of="http://omnifaces.org/functions">
+    
+    <ui:define name="contentTitle">400 - chamada inv&aacute;lida!</ui:define>
+
+    <ui:define name="errorContent">
+    	<ul>
+            <li><label>Mensagem:</label> A chamada realizada foi feita de maneira incorreta. Favor verificar os parametros e/ou a URL.</li>
+            <li><label>Data/hora:</label> #{of:formatDate(now, 'dd-MM-yyyy HH:mm:ss')}</li>
+            <li><label>User agent:</label> #{header['user-agent']}</li>
+            <li><label>IP do Usu&aacute;rio:</label> #{empty header['x-forwarded-for'] ? request.remoteAddr : fn:split(header['x-forwarded-for'], ',')[0]}</li>
+            <li><label>URI:</label> <a href="#{requestScope['javax.servlet.error.request_uri']}">#{requestScope['javax.servlet.error.request_uri']}</a></li>
+            <ui:fragment rendered="#{not empty requestScope['javax.servlet.error.message']}">
+				<p>
+				Mensagem detalhada: <code><h:outputText value="#{requestScope['javax.servlet.error.message']}" escape="false" /></code>
+				</p>
+			</ui:fragment>
+        </ul>        
+    </ui:define>
+</ui:composition>

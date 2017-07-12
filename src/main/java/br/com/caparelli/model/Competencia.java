@@ -40,4 +40,9 @@ public class Competencia implements Serializable {
     @JoinColumn(name="colaborador_id")
 	private Colaborador colaborador;
 
+	public Competencia(String tag, Colaborador colaborador) {
+		this.tag = tag;
+		this.colaborador = colaborador;
+	}
+
 }

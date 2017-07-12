@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:o="http://omnifaces.org/ui"
+	  xmlns:of="http://omnifaces.org/functions"
+	  xmlns:util="http://java.sun.com/jsf/composite/util">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>
+        	<ui:insert name="titulo">
+				<!-- Titulo -->
+			</ui:insert>
+        </title>
+        <h:outputStylesheet library="fonts" name="font-awesome.min.css" />
+        <h:outputStylesheet library="css" name="glyphicons.css" />
+        <h:outputStylesheet library="css" name="default.css" />        
+		<!--[if gte IE 9]>
+		  <style type="text/css">
+		    .gradient {
+		       filter: none;
+		    }
+		  </style>
+		<![endif]-->
+</h:head>
+
+    <h:body id="entirePage">
+
+		<ui:debug hotkey="x" rendered="#{initParam['javax.faces.FACELETS_DEVELOPMENT']}" />
+
+		<div id="divCorpo">
+           	
+			<ui:insert name="conteudo">
+				<!-- Conteudo (central) -->
+			</ui:insert>
+    	</div>    	
+        
+    	<util:loading />
+    	
+    	<!-- <h:outputScript library="js" name="bootstrap.min.js" target="body" /> -->
+    	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces"/>
+    	<h:outputScript library="js" name="util.js" target="body" />
+    	<h:outputScript library="js" name="date-util.js" target="body" />
+        <h:outputScript library="js" name="app.js" target="body" />
+		<h:outputScript library="js" name="prime-locale.js" target="body" />
+    	<script type="text/javascript">
+    		/* function resizePageBody() {
+    			$('#entirePage').css('height', $(window).height() + 'px');
+    		}
+	    	(function($){	
+	            $(window).load(function(){
+	            	resizePageBody();
+	            });
+	        })(jQuery); */
+    	</script>
+    	<ui:insert name="extrascripts"></ui:insert>
+
+    </h:body>
+
+</html>

@@ -19,6 +19,7 @@ public class ColaboradorDTO implements Serializable {
 
 	private static final long serialVersionUID = -609154102223809333L;
 
+	private Integer id;
 	private String nome;
 	private String cargo;
 	private String nomeSetor;
@@ -28,6 +29,7 @@ public class ColaboradorDTO implements Serializable {
 
 		if(entity != null) {
 
+			this.id = entity.getId();
 			this.nome = entity.getNome();
 
 			if(entity.getCargo() != null) {

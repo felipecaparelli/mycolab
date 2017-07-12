@@ -1,0 +1,24 @@
+.form-signin {
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+}
+.form-index {
+	margin: 0 auto;
+    max-width: 800px;
+    padding: 15px;
+}
+#lista h2 {
+    font-size: 24px;
+}
+.ui-grid-row .ui-panel-content img.avatar {
+    max-width: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: baseline;
+}
+
+.right {
+	text-align: right;
+}

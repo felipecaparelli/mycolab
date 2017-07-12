@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:b="http://bootsfaces.net/ui">
+	  
+	  <b:navBar brand="MyColab JSF" brandHref="#" fixed="true" sticky="true">
+		    <b:navbarLinks pull="right">
+		   		<h:form prependId="false">
+		        	<b:navLink value="Logout" action="#{loginView.logout}" icon="log-out" ajax="false"></b:navLink>
+				</h:form>
+		    </b:navbarLinks>
+		</b:navBar>
+</html>

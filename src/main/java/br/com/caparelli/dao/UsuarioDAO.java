@@ -12,7 +12,7 @@ import br.com.caparelli.model.Usuario;
  * @date	10 de jul de 2017
  *
  */
-public interface UsuarioDAO extends DAO<Usuario> {
+public interface UsuarioDAO extends DAO<Usuario, Long> {
 
 	/**
 	 * Realiza a busca do usuário a partir de seu username e password.

@@ -2,6 +2,7 @@ package br.com.caparelli.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -29,9 +30,12 @@ public class Usuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    protected long id;
+    protected Long id;
 
+	@Column(nullable=false)
 	private String username;
+
+	@Column(nullable=false)
 	private String password;
 
 }

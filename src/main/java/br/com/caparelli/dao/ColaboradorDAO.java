@@ -12,6 +12,6 @@ import br.com.caparelli.model.Colaborador;
  * @date	10 de jul de 2017
  *
  */
-public interface ColaboradorDAO extends DAO<Colaborador> {
+public interface ColaboradorDAO extends DAO<Colaborador, Integer> {
 
 }
