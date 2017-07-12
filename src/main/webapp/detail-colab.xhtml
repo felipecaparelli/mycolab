@@ -44,12 +44,12 @@
 					</b:row>
 				</f:facet>
 				
-				<p:dataGrid var="colaborador" value="#{indexView.lista}" columns="2" layout="grid" id="lista" emptyMessage="Nenhum registro encontrado">
+				<p:dataGrid var="item" value="#{indexView.lista}" columns="2" layout="grid" id="lista" emptyMessage="Nenhum registro encontrado">
 			 
-			        <p:panel header="#{colaborador.nome}" style="text-align:center">
+			        <p:panel header="#{car.id}" style="text-align:center">
 			        	<b:row>
 			        		<b:column span="5">
-			                	<p:graphicImage name="img/avatar.png" /> 
+			                	<p:graphicImage name="img/avatar.png"/> 
 			        		</b:column>
 			        		<b:column span="7">
 			        			<h:outputText value="Nome do Colaborador" />

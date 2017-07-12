@@ -1,13 +1,18 @@
 package br.com.caparelli.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,7 +37,20 @@ public class Colaborador implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+
+	@Column(nullable = false)
 	private String nome;
+
+	@Lob
+	@Column(name="avatar")
+	private byte[] avatar;
+
+	@Lob
+	@Column(name="intro", length=1024)
+	private String introducao;
+
+	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL)
+	private List<Competencia> competencias;
 
 	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="cargo_id")
