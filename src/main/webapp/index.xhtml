@@ -16,7 +16,7 @@
 					<f:facet name="heading">
 						<b:row>
 							<b:column span="8">
-								<h2 class="form-signin-heading">Colaboradores</h2>
+								<h2 class="form-signin-heading"><h:outputText value="#{msg.colaboradores}" /></h2>
 							</b:column>
 							<b:column span="4">
 								<b:commandButton look="info btn-block" value="Adicionar"
@@ -25,8 +25,7 @@
 						</b:row>
 						<b:row>
 							<b:column span="12">
-								<b:inputText id="busca" value="#{indexView.busca}"
-									placeholder="Busque pelo nome ou cargo...">
+								<b:inputText id="busca" value="#{indexView.busca}" placeholder="#{msg.busquePeloNomeOuCargo}">
 									<f:facet name="append">
 										<b:commandButton look="info" ajax="true" update="lista" icon="search" icon-align="right" />
 									</f:facet>

@@ -6,7 +6,10 @@
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<f:metadata>
-        <f:viewParam name="id" value="#{detalheColaboradorView.colaboradorId}" />
+		<!-- <f:viewParam name="id" value="#{detalheColaboradorView.colaborador}"
+            converter="#{colaboradorConverter}" converterMessage="Colaborador desconhecido"
+            required="true" requiredMessage="É obrigatório informar o colaborador" /> -->
+       <f:viewParam name="id" value="#{detalheColaboradorView.colaboradorId}" />
         <f:event type="preRenderView" listener="#{detalheColaboradorView.init}" />
     </f:metadata>
 <h:body>
@@ -14,24 +17,59 @@
 		template="/WEB-INF/templates/template-application.xhtml">
 		<ui:define name="conteudo">
 			<h:form styleClass="form-index" prependId="false">
+			
+				<b:modal id="confirm" title="#{msg.confirmacao}" styleClass="confirm-modal"
+		             closable="false"  close-on-escape="false" backdrop="false">
+			        <p>Tem certeza que deseja excluir esse colaborador?</p>
+			        <f:facet name="footer">
+			            <b:button value="#{msg.nao}" dismiss="modal" />
+			            <b:button value="#{msg.sim}" look="primary" dismiss="modal" />
+			        </f:facet>
+			    </b:modal>
 
 				<b:panel look="info" collapsible="false">
 
 					<f:facet name="heading">
 						<b:row>
-							<b:column span="12" styleClass="right">
+							<b:column span="8">
+								<h4 class="form-signin-heading"><h:outputText value="#{msg.detalheDoColaborador}" /></h4>
+							</b:column>
+							<b:column span="4" styleClass="right">
+								<b:button outcome="home" icon-awesome="chevron-left"></b:button>
 								<b:button outcome="editar" icon-awesome="pencil">
 							        <f:param name="id" value="#{detalheColaboradorView.colaborador.id}" />
 							    </b:button>
+							    <b:button icon-awesome="trash" onclick="$('.confirm-modal').modal()" />
 							</b:column>
 						</b:row>
 					</f:facet>
+					
+					<b:row>
+						<b:column span="4">
+							<h:graphicImage library="img" name="avatar.png" styleClass="avatar" />
+						</b:column>
+						<b:column span="8">
+							<h2>
+								<h:outputText value="#{detalheColaboradorView.colaborador.nome}" />
+							</h2>
+							<h4>
+								<h:outputText value="#{detalheColaboradorView.colaborador.cargo}" />
+							</h4>
+							<b:icon name="#{detalheColaboradorView.colaborador.iconeSetor}" />
+							<h:outputText value="#{detalheColaboradorView.colaborador.nomeSetor}" />
+						</b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="12">
+							
+							<ui:repeat var="competencia" value="#{detalheColaboradorView.colaborador.competencias}" varStatus="status">
+								<b:label text="#{competencia}" severity="info" style-class="lg" style="margin-right: 4px" />
+							</ui:repeat>
+						</b:column>
+					</b:row>
 
-					TODO carregar competencias e permitir cadastrar ()
-					
-					TODO carregar contatos e permitir cadastrar
-					
-					
+					TODO carregar contatos
 
 				</b:panel>
 

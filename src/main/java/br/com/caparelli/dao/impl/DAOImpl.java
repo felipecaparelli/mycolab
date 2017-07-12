@@ -74,7 +74,9 @@ public abstract class DAOImpl<T, V> implements DAO<T, V>, Serializable {
 	@Override
 	public T find(V id) {
 
-		CriteriaBuilder cb = this.em.getCriteriaBuilder();
+		return this.em.find(this.classe, id);
+
+		/*CriteriaBuilder cb = this.em.getCriteriaBuilder();
 		CriteriaQuery<T> cq = cb.createQuery(this.classe);
 
 		// SELECT root FROM Root
@@ -82,7 +84,7 @@ public abstract class DAOImpl<T, V> implements DAO<T, V>, Serializable {
 		cq.select(root).where(cb.equal(root.get("id"), id));
 
 		TypedQuery<T> query = em.createQuery(cq);
-		return query.getSingleResult();
+		return query.getSingleResult();*/
 	}
 
 	@Override

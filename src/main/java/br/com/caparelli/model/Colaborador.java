@@ -49,7 +49,7 @@ public class Colaborador implements Serializable {
 	@Column(name="intro", length=1024)
 	private String introducao;
 
-	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "colaborador", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Competencia> competencias;
 
 	@OneToOne(fetch=FetchType.EAGER)
@@ -61,7 +61,7 @@ public class Colaborador implements Serializable {
 	private Setor setor;
 
 
-	@OneToMany(mappedBy = "colaborador", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "colaborador", fetch=FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<ContatoColaborador> contatos;
 
 }

@@ -1,3 +1,12 @@
+html, body {
+    height: 100%;
+    margin: 0 0;
+}
+
+#entirePage {
+    padding-bottom: 120px;
+}
+
 .form-signin {
     margin: 0 auto;
     max-width: 330px;
@@ -19,6 +28,28 @@
     vertical-align: baseline;
 }
 
+.panel-body img.avatar {
+    max-width: 120px;
+    border-radius: 50%;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: baseline;
+}
+
 .right {
 	text-align: right;
+}
+
+footer#footerRodape {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    margin: 20px 0 0;
+}
+
+div#mainDivFooter {
+    background: #3e5c92;
+    padding: 15px;
+    color: #759cbf;
 }

@@ -2,7 +2,6 @@ package br.com.caparelli.view;
 
 import java.io.Serializable;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -32,17 +31,23 @@ public class DetalheColaboradorView implements Serializable {
 	@EJB
 	private ColaboradorBO colaboradorBO;
 
-	@PostConstruct
 	public void init() {
-		//TODO carregar os dados do colaborador selecionado!
+
 		if(this.colaboradorId == null) {
 			MessageUtils.error("Requisi\u00e7\u00e3o inv\u00e1lida");
 			return;
 		}
+
+		this.colaborador = colaboradorBO.findById(this.colaboradorId);
 	}
 
 	public String voltar() {
 		return "home";
+	}
+
+	public void removerColaborador() {
+		this.colaboradorBO.delete(this.colaborador);
+		MessageUtils.info("Colaborador removido com sucesso");
 	}
 
 

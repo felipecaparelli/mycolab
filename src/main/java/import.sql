@@ -14,3 +14,8 @@ INSERT INTO COLABORADOR (id, nome, cargo_id, setor_id) VALUES (3, 'Maria Bonita'
 INSERT INTO COLABORADOR (id, nome, cargo_id, setor_id) VALUES (4, 'Joao Santana', 2, 1);
 INSERT INTO COLABORADOR (id, nome, cargo_id, setor_id) VALUES (5, 'Americo Vespucio', 3, 1);
 INSERT INTO COLABORADOR (id, nome, cargo_id, setor_id) VALUES (6, 'Anita Garibaldi', 4, 2);
+
+INSERT INTO COMPETENCIA (id, tag, colaborador_id) VALUES (1, 'Java EE', 1);
+INSERT INTO COMPETENCIA (id, tag, colaborador_id) VALUES (2, 'JSF', 1);
+INSERT INTO COMPETENCIA (id, tag, colaborador_id) VALUES (3, 'JPA', 1);
+INSERT INTO COMPETENCIA (id, tag, colaborador_id) VALUES (4, 'AngularJS', 1);
