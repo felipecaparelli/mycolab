@@ -2,15 +2,15 @@ package br.com.caparelli.view;
 
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import br.com.caparelli.dao.UsuarioDAO;
 import br.com.caparelli.exception.AcessoNegadoException;
 import br.com.caparelli.model.Usuario;
+import br.com.caparelli.util.MessageUtils;
 import br.com.caparelli.util.SessionUtils;
 
 /**
@@ -33,7 +33,7 @@ public class LoginView implements Serializable {
 	private String password;
 	private String message;
 
-	//TODO incluir CDI
+	@EJB
 	private UsuarioDAO loginDAO;
 
 	/**
@@ -81,38 +81,21 @@ public class LoginView implements Serializable {
 		this.message = message;
 	}
 
-	//validate login
-		public String login() {
+	public String login() {
 
-			try {
+		try {
 
-				Usuario usuario = loginDAO.login(this.username, this.password);
+			Usuario usuario = loginDAO.login(this.username, this.password);
 
-				HttpSession session = SessionUtils.getSession();
-				session.setAttribute("username", usuario.getUsername());
+			HttpSession session = SessionUtils.getSession();
+			session.setAttribute("username", usuario.getUsername());
 
-				return "home";
+			return "home";
 
-			} catch (AcessoNegadoException e) {
-				FacesContext.getCurrentInstance().addMessage(
-						null,
-						new FacesMessage(FacesMessage.SEVERITY_WARN,
-								"Incorrect Username and Passowrd",
-								"Please enter correct username and Password"));
-				return "login";
-			}
-		}
-
-		/**
-		 * Finaliza a sess\u00e3o do usu\u00e1rio logado.
-		 *
-		 * @return action para a tela de login
-		 */
-		public String logout() {
-
-			SessionUtils.getSession().invalidate();
-
+		} catch (AcessoNegadoException e) {
+			MessageUtils.error("Usu\u00e1rio ou senha inv\u00e1lidos");
 			return "login";
 		}
+	}
 
 }

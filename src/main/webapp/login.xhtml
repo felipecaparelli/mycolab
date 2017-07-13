@@ -3,10 +3,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>MyColab - Entrar</title>
         <style type="text/css">
             .form-signin {
                 margin: 0 auto;
@@ -16,21 +16,40 @@
         </style>
     </h:head>
     <h:body style="padding-top: 60px; background-color: #add;">
-        <b:container>
-            <h:form styleClass="form-signin" prependId="false">
-                <h2 class="form-signin-heading">Entrar</h2>
-                <b:inputText id="username" placeholder="Usuário" value="#{loginView.user}">
-                    <f:facet name="prepend">
-                        <b:icon name="user" />
-                    </f:facet>
-                </b:inputText>
-                <b:inputText id="password" placeholder="Senha" type="password" value="#{loginView.pwd}">
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-                <b:selectBooleanCheckbox value="true" caption="lembrar-me"/>
-                <b:commandButton action="#{loginView.login}" look="primary btn-block" value="Entrar" icon="log-in" size="lg"/>
+    
+    	
+    	
+        <b:container styleClass="form-signin">
+        
+	       	<p:messages id="messages" autoUpdate="true" />
+	       	
+            <h:form prependId="false">
+			
+				<b:panel look="primary" collapsible="false">
+					
+					<f:facet name="heading">
+						<h2 class="form-signin-heading"><h:outputText value="#{msg.entrar}" /></h2>
+					</f:facet>
+					
+					<b:inputText id="username" placeholder="#{msg.usuario}" value="#{loginView.username}" required="true" requiredMessage="O usuário é obrigatório">
+	                    <f:facet name="prepend">
+	                        <b:icon name="user" />
+	                    </f:facet>
+	                </b:inputText>
+	                
+	                <b:inputText id="password" placeholder="#{msg.senha}" type="password" value="#{loginView.password}" required="true" requiredMessage="A senha é obrigatória">
+	                    <f:facet name="prepend">
+	                        <b:iconAwesome name="key" />
+	                    </f:facet>
+	                </b:inputText>
+					
+	                <b:selectBooleanCheckbox value="true" caption="#{msg.manterMeLogado}"/>
+	                
+	                <b:commandButton action="#{loginView.login}" look="primary btn-block" value="#{msg.entrar}" icon="log-in" size="lg" ajax="false" />
+	                
+	                <!-- <b:commandButton look="primary btn-block" value="#{msg.entrarComFacebook}" icon="facebook" size="lg"/> -->
+					
+				</b:panel>
             </h:form>
         </b:container>
     </h:body>

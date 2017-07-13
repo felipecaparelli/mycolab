@@ -1,0 +1,139 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<f:metadata>
+       <f:viewParam name="id" value="#{detalheColaboradorView.colaboradorId}" />
+        <f:event type="preRenderView" listener="#{detalheColaboradorView.init}" />
+    </f:metadata>
+<h:body>
+	<ui:composition
+		template="/WEB-INF/templates/template-application.xhtml">
+		<ui:define name="conteudo">
+			<h:form styleClass="form-index" prependId="false">
+			
+				<b:modal id="confirm" title="#{msg.confirmacao}" styleClass="confirm-modal"
+		             closable="false"  close-on-escape="false" backdrop="false">
+			        <p>#{msg.confirmacaoExcluirColaborador}</p>
+			        <f:facet name="footer">
+			            <b:button value="#{msg.nao}" dismiss="modal" icon="" />
+			            <b:button value="#{msg.sim}" look="primary" dismiss="modal" />
+			        </f:facet>
+			    </b:modal>
+
+				<b:panel look="info" collapsible="false">
+
+					<f:facet name="heading">
+						<b:row>
+							<b:column span="8">
+								<h4 class="form-signin-heading"><h:outputText value="#{msg.detalheDoColaborador}" /></h4>
+							</b:column>
+							<b:column span="4" styleClass="right">
+								<b:button outcome="home" icon-awesome="chevron-left"></b:button>
+								<b:button outcome="editar" icon-awesome="pencil">
+							        <f:param name="id" value="#{detalheColaboradorView.colaborador.id}" />
+							    </b:button>
+							    <b:button icon-awesome="trash" onclick="$('.confirm-modal').modal()" />
+							</b:column>
+						</b:row>
+					</f:facet>
+					
+					<b:row>
+						<b:column span="4">
+							<h:graphicImage library="img" name="avatar.png" styleClass="avatar" />
+						</b:column>
+						<b:column span="8">
+							<h2>
+								<h:outputText value="#{detalheColaboradorView.colaborador.nome}" />
+							</h2>
+							<h4>
+								<h:outputText value="#{detalheColaboradorView.colaborador.cargo}" />
+							</h4>
+							<b:icon name="#{detalheColaboradorView.colaborador.iconeSetor}" />
+							<h:outputText value="#{detalheColaboradorView.colaborador.nomeSetor}" />
+						</b:column>
+					</b:row>
+					
+					<hr />
+					
+					<b:row>
+						<b:column span="12">
+							
+							<ui:repeat var="competencia" value="#{detalheColaboradorView.colaborador.competencias}" varStatus="status">
+								<b:label text="#{competencia}" severity="info" style-class="lg" style="margin-right: 4px" />
+							</ui:repeat>
+						</b:column>
+					</b:row>
+					
+					<hr />
+					
+					<b:row>
+						<b:column span="12">
+							<h:outputText value="#{detalheColaboradorView.colaborador.introducao}" />
+						</b:column>
+					</b:row>
+					
+					<hr />
+
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="phone" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.telefoneFixo}"  />
+						</b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="mobile" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.celular}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="envelop-o" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.email}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="facebook-official" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.facebook}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="linkedin" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.linkedin}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="wordpress" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.blog}"  />
+						</b:column>
+					</b:row>
+
+				</b:panel>
+
+				<p:growl id="growl" life="2000" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

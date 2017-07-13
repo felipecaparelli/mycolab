@@ -6,11 +6,16 @@ import org.hibernate.Session;
 
 /**
  *
- * @author LC5257777
+ * <b>Definicao</b>: Interface gen\u00e9rica para DAOs.
+ *
+ * <br><h1>Projeto:MyColab JSF</h1><br>
+ *
+ * @author 	Felipe Caparelli
+ * @date	11 de jul de 2017
  *
  * @param <T>
  */
-public interface DAO<T> {
+public interface DAO<T, V> {
 
 	/**
 	 * Retorna o DelegateSession do Hibernate
@@ -20,7 +25,7 @@ public interface DAO<T> {
 
 	T update(T entity);
 	T save(T entity);
-	T find(Long id);
+	T find(V id);
 	List<T> list();
 	void remove(T entity);
 	void flush();

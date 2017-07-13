@@ -1,37 +1,70 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:head>
-        <title>MyColab - Index</title>
-        <style type="text/css">
-            .form-signin {
-                margin: 0 auto;
-                max-width: 330px;
-                padding: 15px;
-            }
-        </style>
-    </h:head>
-    <h:body style="padding-top: 60px; background-color: #add;">
-        <b:container>
-            <h:form styleClass="form-signin" prependId="false">
-                <h2 class="form-signin-heading">Entrar</h2>
-                <b:inputText id="username" placeholder="Usuário" value="#{loginView.user}">
-                    <f:facet name="prepend">
-                        <b:icon name="user" />
-                    </f:facet>
-                </b:inputText>
-                <b:inputText id="password" placeholder="Senha" type="password" value="#{loginView.pwd}">
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-                <b:selectBooleanCheckbox value="true" caption="lembrar-me"/>
-                <b:commandButton action="#{loginView.login}" look="primary btn-block" value="Entrar" icon="log-in" size="lg"/>
-            </h:form>
-        </b:container>
-    </h:body>
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition
+		template="/WEB-INF/templates/template-application.xhtml">
+		<ui:define name="conteudo">
+			<h:form styleClass="form-index" prependId="false">
+
+				<b:panel look="primary" collapsible="false">
+
+					<f:facet name="heading">
+						<b:row>
+							<b:column span="8">
+								<h2 class="form-signin-heading"><h:outputText value="#{msg.colaboradores}" /></h2>
+							</b:column>
+							<b:column span="4">
+								<b:button outcome="editar" look="info btn-block" value="Adicionar"
+									icon="plus" size="sm" />
+							</b:column>
+						</b:row>
+						<b:row>
+							<b:column span="12">
+								<b:inputText id="busca" value="#{indexView.busca}" placeholder="#{msg.busquePeloNomeOuCargo}">
+									<f:facet name="append">
+										<b:commandButton look="info" ajax="true" update="lista" icon="search" icon-align="right" />
+									</f:facet>
+								</b:inputText>
+							</b:column>
+						</b:row>
+					</f:facet>
+
+					<p:dataGrid id="lista" var="colaborador" value="#{indexView.lista}"
+						columns="2" layout="grid" emptyMessage="Nenhum registro encontrado">
+
+						<p:panel>
+							<b:row>
+								<h:link outcome="detail">
+	                    			<f:param name="id" value="#{colaborador.id}" />
+									<b:column span="4">
+										<h:graphicImage library="img" name="avatar.png" styleClass="avatar" />
+									</b:column>
+									<b:column span="8">
+										<h2>
+											<h:outputText value="#{colaborador.nome}" />
+										</h2>
+										<h4>
+											<h:outputText value="#{colaborador.cargo}" />
+										</h4>
+										<h:outputText value="#{colaborador.nomeSetor}" />
+									</b:column>
+	               				</h:link>
+							</b:row>
+						</p:panel>
+
+					</p:dataGrid>
+
+				</b:panel>
+
+				<p:growl id="growl" life="2000" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
 </html>

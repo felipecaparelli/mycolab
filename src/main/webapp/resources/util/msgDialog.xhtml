@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:composite="http://java.sun.com/jsf/composite"     
+      xmlns:p="http://primefaces.org/ui">
+<composite:interface preferred="true" displayName="msgDialog" shortDescription="Dialog para mensagens do sistema">
+	<composite:attribute name="mensagem" required="false" default="#{msg.mensagem}" />
+	<composite:attribute name="isTarefa" type="java.lang.Boolean" default="false" />
+</composite:interface>
+<composite:implementation>
+
+	<p:dialog id="msgDialog" widgetVar="messageDialog" modal="true" draggable="false"
+		closable="false" resizable="false" visible="#{not empty facesContext.messageList}" header="#{cc.attrs.mensagem}"
+		style="max-width: 700px;" >
+		<p:outputPanel>
+		   	<p:messages id="messagesInDialog" showSummary="true" showDetail="true" showIcon="true" autoUpdate="true" escape="false" />
+		</p:outputPanel>
+		<f:facet name="footer">
+			<p:commandButton id="btnFechar" immediate="true" rendered="#{not cc.attrs.isTarefa}" process="@none" update="@none" value="#{msg.fechar}" onclick="PF('messageDialog').hide();" icon="ui-icon-close" />
+			<p:commandButton id="btnFecharTarefa" immediate="true" rendered="#{cc.attrs.isTarefa}" value="#{msg.fechar}" action="#{redirectView.sair}" icon="ui-icon-close" onclick="PF('messageDialog').hide();" onstart="loading.blockPage();" />
+		</f:facet>							
+	</p:dialog>
+
+</composite:implementation>
+</html>

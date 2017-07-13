@@ -32,7 +32,7 @@ import br.com.caparelli.exception.ValidacaoException;
  *
  * @param <T>
  */
-public abstract class DAOImpl<T> implements DAO<T>, Serializable {
+public abstract class DAOImpl<T, V> implements DAO<T, V>, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -72,16 +72,8 @@ public abstract class DAOImpl<T> implements DAO<T>, Serializable {
 	}
 
 	@Override
-	public T find(Long id) {
-		CriteriaBuilder cb = this.em.getCriteriaBuilder();
-		CriteriaQuery<T> cq = cb.createQuery(this.classe);
-
-		// SELECT root FROM Root
-		Root<T> root = cq.from(this.classe);
-		cq.select(root).where(cb.equal(root.get("id"), id));
-
-		TypedQuery<T> query = em.createQuery(cq);
-		return query.getSingleResult();
+	public T find(V id) {
+		return this.em.find(this.classe, id);
 	}
 
 	@Override

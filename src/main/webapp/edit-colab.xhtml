@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<f:metadata>
+       <f:viewParam name="id" value="#{edicaoColaboradorView.colaboradorId}" />
+        <f:event type="preRenderView" listener="#{edicaoColaboradorView.preRender}" />
+    </f:metadata>
+<h:body>
+	<ui:composition
+		template="/WEB-INF/templates/template-application.xhtml">
+		<ui:define name="conteudo">
+			<h:form styleClass="form-index" prependId="false">
+			
+				<b:modal id="confirm" title="#{msg.confirmacao}" styleClass="confirm-modal"
+		             closable="false"  close-on-escape="false" backdrop="false">
+			        <p>#{msg.confirmacaoExcluirColaborador}</p>
+			        <f:facet name="footer">
+			            <b:button value="#{msg.nao}" dismiss="modal" icon="" />
+			            <b:button value="#{msg.sim}" look="primary" dismiss="modal" />
+			        </f:facet>
+			    </b:modal>
+
+				<b:panel look="info" collapsible="false">
+
+					<f:facet name="heading">
+						<b:row>
+							<b:column span="8">
+								<h4 class="form-signin-heading"><h:outputText value="#{msg.editarColaborador}" /></h4>
+							</b:column>
+							<b:column span="4" styleClass="right">
+								<b:button outcome="home" icon-awesome="chevron-left"></b:button>
+							    <b:commandButton look="success" icon="ok" value="#{msg.salvar}" actionListener="#{edicaoColaboradorView.salvar}" />
+							</b:column>
+						</b:row>
+					</f:facet>
+					
+					<b:row>
+						<b:column span="4">
+							<h:graphicImage library="img" name="avatar.png" styleClass="avatar" />
+						</b:column>
+						<b:column span="8">
+						
+							<b:row>
+								<b:column span="12">
+									<b:inputText id="nome" label="Nome" placeholder="Nome do colaborador" value="#{edicaoColaboradorView.colaborador.nome}"  />
+								</b:column>
+								<b:selectOneMenu label="Cargo" value="#{edicaoColaboradorView.cargoSelecionado}" large-screen="full-width">
+									<f:selectItem itemLabel="Selecione o cargo" itemValue="" />
+						            <f:selectItems value="#{edicaoColaboradorView.cargos}" var="cargo" itemValue="#{cargo.descricao}" itemLabel="#{cargo.descricao}" />
+								</b:selectOneMenu>
+								<b:selectOneMenu label="Setor" value="#{edicaoColaboradorView.colaborador.nomeSetor}" large-screen="full-width">
+					                <f:facet name="prepend">
+					                    <b:iconAwesome name="#{edicaoColaboradorView.colaborador.iconeSetor}" />
+					                </f:facet>
+					                <f:selectItem itemLabel="Selecione o Setor" />
+					                <f:selectItem itemLabel="Escritório de Inovações" />
+					                <f:selectItem itemLabel="Comercial" />
+					            </b:selectOneMenu>
+							</b:row>
+							
+						</b:column>
+					</b:row>
+					
+					<hr />
+					
+					<b:row>
+						<b:column span="12">
+							<!-- <b:inputText tags="true" value="#{edicaoColaboradorView.competencias}" placeholder="Competências principais" large-screen="full-width" /> -->
+							<b:inputText label="Competências" value="#{edicaoColaboradorView.competencias}" typeahead="true" tags="true" typeahead-values="JSF,Java,Design,Photoshop,JBoss,Primefaces,Negociação,Arduino,Marketing Digital,Excel" medium-screen="full-width" large-screen="full-width" tiny-screen="full-width" />
+						</b:column>
+					</b:row>
+					
+					<hr />
+					
+					<b:row>
+						<b:column span="12">
+							<b:inputTextarea placeholder="Introdução..." value="#{edicaoColaboradorView.colaborador.introducao}">
+						    </b:inputTextarea>
+						</b:column>
+					</b:row>
+					
+					<hr />
+
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="phone" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="Telefone fixo" value="#{edicaoColaboradorView.colaborador.telefoneFixo}"  />
+						</b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="mobile" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="Celular" value="#{edicaoColaboradorView.colaborador.celular}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="envelop-o" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="E-mail" value="#{edicaoColaboradorView.colaborador.email}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="facebook-official" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="Perfil do Facebook" value="#{edicaoColaboradorView.colaborador.facebook}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="linkedin" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="Perfil do LinkedIn" value="#{edicaoColaboradorView.colaborador.linkedin}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="wordpress" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<b:inputText placeholder="Blog / Site Pessoal" value="#{edicaoColaboradorView.colaborador.blog}"  />
+						</b:column>
+					</b:row>
+
+				</b:panel>
+
+				<p:growl id="growl" life="2000" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
