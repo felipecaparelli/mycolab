@@ -11,7 +11,7 @@ import br.com.caparelli.dto.DetalheColaboradorDTO;
 import br.com.caparelli.util.MessageUtils;
 
 /**
- * <b>Definicao</b>: Bean respons\u00e1vel por gerenciar a tela de detalhe do colaborador.
+ * <b>Definicao</b>: Bean respons\u00e1vel por gerenciar a tela de detalhe do colaborador (readonly).
  *
  * <br><h1>Projeto: MyColab JSF</h1><br>
  *
@@ -34,11 +34,11 @@ public class DetalheColaboradorView implements Serializable {
 	public void init() {
 
 		if(this.colaboradorId == null) {
-			MessageUtils.error("Requisi\u00e7\u00e3o inv\u00e1lida");
+			MessageUtils.errorI18n("requisicaoInvalida");
 			return;
 		}
 
-		this.colaborador = colaboradorBO.findById(this.colaboradorId);
+		this.colaborador = this.colaboradorBO.findById(this.colaboradorId);
 	}
 
 	public String voltar() {

@@ -39,6 +39,11 @@
 		<param-value>bootstrap</param-value>
 	</context-param>
 	
+	<context-param>
+	    <param-name>BootsFaces_THEME</param-name>
+	    <param-value>cerulean</param-value>
+	</context-param>
+	
 	<!-- <listener>
 	    <listener-class>org.h2.server.web.DbStarter</listener-class>
 	</listener> -->

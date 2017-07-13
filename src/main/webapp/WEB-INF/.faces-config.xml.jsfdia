@@ -18,6 +18,9 @@
    <PROCESS-ITEM-OUTPUT ID="detail::#detail-colab.xhtml" NAME="output"
     PATH="/detail-colab.xhtml" TARGET="rules:#detail-colab.xhtml"
     TITLE="detail" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="editar::#edit-colab.xhtml" NAME="output1"
+    PATH="/edit-colab.xhtml" TARGET="rules:#edit-colab.xhtml"
+    TITLE="editar" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:*" PATH="*" SHAPE="32,161,0,0" model-entity="JSFProcessGroup">

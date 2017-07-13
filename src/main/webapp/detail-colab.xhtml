@@ -6,9 +6,6 @@
 	xmlns:b="http://bootsfaces.net/ui" xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<f:metadata>
-		<!-- <f:viewParam name="id" value="#{detalheColaboradorView.colaborador}"
-            converter="#{colaboradorConverter}" converterMessage="Colaborador desconhecido"
-            required="true" requiredMessage="É obrigatório informar o colaborador" /> -->
        <f:viewParam name="id" value="#{detalheColaboradorView.colaboradorId}" />
         <f:event type="preRenderView" listener="#{detalheColaboradorView.init}" />
     </f:metadata>
@@ -20,9 +17,9 @@
 			
 				<b:modal id="confirm" title="#{msg.confirmacao}" styleClass="confirm-modal"
 		             closable="false"  close-on-escape="false" backdrop="false">
-			        <p>Tem certeza que deseja excluir esse colaborador?</p>
+			        <p>#{msg.confirmacaoExcluirColaborador}</p>
 			        <f:facet name="footer">
-			            <b:button value="#{msg.nao}" dismiss="modal" />
+			            <b:button value="#{msg.nao}" dismiss="modal" icon="" />
 			            <b:button value="#{msg.sim}" look="primary" dismiss="modal" />
 			        </f:facet>
 			    </b:modal>
@@ -60,6 +57,8 @@
 						</b:column>
 					</b:row>
 					
+					<hr />
+					
 					<b:row>
 						<b:column span="12">
 							
@@ -68,8 +67,66 @@
 							</ui:repeat>
 						</b:column>
 					</b:row>
+					
+					<hr />
+					
+					<b:row>
+						<b:column span="12">
+							<h:outputText value="#{detalheColaboradorView.colaborador.introducao}" />
+						</b:column>
+					</b:row>
+					
+					<hr />
 
-					TODO carregar contatos
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="phone" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.telefoneFixo}"  />
+						</b:column>
+					</b:row>
+					
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="mobile" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.celular}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="envelop-o" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.email}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="facebook-official" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.facebook}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="linkedin" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.linkedin}"  />
+						</b:column>
+					</b:row>
+					<b:row>
+						<b:column span="4">
+							<b:iconAwesome name="wordpress" size="3x"></b:iconAwesome>
+						</b:column>
+						<b:column span="8">
+							<h:outputText value="#{edicaoColaboradorView.colaborador.blog}"  />
+						</b:column>
+					</b:row>
 
 				</b:panel>
 

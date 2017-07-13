@@ -16,10 +16,14 @@
         </style>
     </h:head>
     <h:body style="padding-top: 60px; background-color: #add;">
-        <b:container>
-            <h:form styleClass="form-signin" prependId="false">
-            
-	            <p:growl id="growl" life="2000" />
+    
+    	
+    	
+        <b:container styleClass="form-signin">
+        
+	       	<p:messages id="messages" autoUpdate="true" />
+	       	
+            <h:form prependId="false">
 			
 				<b:panel look="primary" collapsible="false">
 					
@@ -27,13 +31,13 @@
 						<h2 class="form-signin-heading"><h:outputText value="#{msg.entrar}" /></h2>
 					</f:facet>
 					
-					<b:inputText id="username" placeholder="#{msg.usuario}" value="#{loginView.username}">
+					<b:inputText id="username" placeholder="#{msg.usuario}" value="#{loginView.username}" required="true" requiredMessage="O usuário é obrigatório">
 	                    <f:facet name="prepend">
 	                        <b:icon name="user" />
 	                    </f:facet>
 	                </b:inputText>
 	                
-	                <b:inputText id="password" placeholder="#{msg.senha}" type="password" value="#{loginView.password}">
+	                <b:inputText id="password" placeholder="#{msg.senha}" type="password" value="#{loginView.password}" required="true" requiredMessage="A senha é obrigatória">
 	                    <f:facet name="prepend">
 	                        <b:iconAwesome name="key" />
 	                    </f:facet>
@@ -41,9 +45,9 @@
 					
 	                <b:selectBooleanCheckbox value="true" caption="#{msg.manterMeLogado}"/>
 	                
-	                <b:commandButton action="#{loginView.login}" look="success btn-block" value="#{msg.entrar}" icon="log-in" size="lg"/>
+	                <b:commandButton action="#{loginView.login}" look="primary btn-block" value="#{msg.entrar}" icon="log-in" size="lg" ajax="false" />
 	                
-	                <b:commandButton look="primary btn-block" value="#{msg.entrarComFacebook}" icon="facebook" size="lg"/>
+	                <!-- <b:commandButton look="primary btn-block" value="#{msg.entrarComFacebook}" icon="facebook" size="lg"/> -->
 					
 				</b:panel>
             </h:form>

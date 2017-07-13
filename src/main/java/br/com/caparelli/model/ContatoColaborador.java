@@ -46,4 +46,16 @@ public class ContatoColaborador implements Serializable {
     @JoinColumn(name="colaborador_id")
 	private Colaborador colaborador;
 
+	public ContatoColaborador() {
+
+	}
+
+	public ContatoColaborador(TipoContato tipo, String contato, Colaborador colaborador) {
+		this.tipo = tipo;
+		this.contato = contato;
+		this.colaborador = colaborador;
+	}
+
+
+
 }

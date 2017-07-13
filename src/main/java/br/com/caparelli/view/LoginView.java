@@ -33,7 +33,6 @@ public class LoginView implements Serializable {
 	private String password;
 	private String message;
 
-	//TODO incluir CDI
 	@EJB
 	private UsuarioDAO loginDAO;
 

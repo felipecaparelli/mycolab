@@ -10,9 +10,11 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import br.com.caparelli.bo.ColaboradorBO;
+import br.com.caparelli.dao.CargoDAO;
 import br.com.caparelli.dao.ColaboradorDAO;
 import br.com.caparelli.dto.ColaboradorDTO;
 import br.com.caparelli.dto.DetalheColaboradorDTO;
+import br.com.caparelli.model.Cargo;
 import br.com.caparelli.model.Colaborador;
 import br.com.caparelli.model.Competencia;
 
@@ -21,6 +23,9 @@ public class ColaboradorBOImpl implements ColaboradorBO {
 
 	@EJB
 	private ColaboradorDAO dao;
+
+	@EJB
+	private CargoDAO cargoDAO;
 
 	/* (non-Javadoc)
 	 * @see br.com.caparelli.bo.ColaboradorBO#list()
@@ -59,7 +64,9 @@ public class ColaboradorBOImpl implements ColaboradorBO {
 		entity.setNome(dto.getNome());
 		entity.setIntroducao(dto.getIntroducao());
 
+		preparaCargo(dto, entity);
 		preparaCompetencias(dto, entity);
+		//preparaContatos(dto, entity);
 
 		if(entity.getId() == null) {
 			this.dao.save(entity);
@@ -68,6 +75,36 @@ public class ColaboradorBOImpl implements ColaboradorBO {
 		}
 
 		return new DetalheColaboradorDTO(entity);
+	}
+
+	/**
+	 * TODO: Explicar finalidade do método
+	 *
+	 * @param dto
+	 * @param entity
+	 */
+	/*private void preparaContatos(DetalheColaboradorDTO dto, Colaborador entity) {
+		if(dto.getContatos() != null && !dto.getContatos().isEmpty()) {
+			entity.setContatos(new ArrayList<>(dto.getContatos().size()));
+			for (ContatoDTO	contatoDTO : dto.getContatos()) {
+				entity.getContatos().add(new ContatoColaborador(TipoContato.getByIcone(contatoDTO.getIcone()), contatoDTO.getContato(), entity));
+			}
+		}
+	}*/
+
+	/**
+	 * TODO: Explicar finalidade do método
+	 *
+	 * @param dto
+	 * @param entity
+	 */
+	private void preparaCargo(DetalheColaboradorDTO dto, Colaborador entity) {
+		if(dto.getCargo() != null) {
+			Cargo cargo = this.cargoDAO.findByDescricao(dto.getCargo());
+			if(cargo != null) {
+				entity.setCargo(cargo);
+			}
+		}
 	}
 
 	/**

@@ -1,4 +1,3 @@
-
 package br.com.caparelli.dao;
 
 import br.com.caparelli.model.Colaborador;

@@ -4,7 +4,7 @@ html, body {
 }
 
 #entirePage {
-    padding-bottom: 120px;
+    padding-bottom: 120px; background: #f2f2f2;
 }
 
 .form-signin {
@@ -52,4 +52,12 @@ div#mainDivFooter {
     background: #3e5c92;
     padding: 15px;
     color: #759cbf;
+}
+
+#entirePage .navbar {
+	border-radius: 0;
+}
+
+#entirePage .ui-grid {
+    border: 0;
 }

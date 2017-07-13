@@ -28,6 +28,14 @@ public class DetalheColaboradorDTO extends ColaboradorDTO {
 	private String introducao;
 	private byte[] avatar;
 	private List<String> competencias;
+	//private List<ContatoDTO> contatos;
+
+	private String telefoneFixo;
+	private String celular;
+	private String email;
+	private String facebook;
+	private String linkedin;
+	private String blog;
 
 	/**
 	 * @param entity
@@ -40,11 +48,22 @@ public class DetalheColaboradorDTO extends ColaboradorDTO {
 
 			this.introducao = entity.getIntroducao();
 			this.avatar = entity.getAvatar();
+			this.telefoneFixo = entity.getTelefoneFixo();
+			this.celular = entity.getCelular();
+			this.email = entity.getEmail();
+			this.facebook = entity.getFacebook();
+			this.linkedin = entity.getLinkedin();
+			this.blog = entity.getBlog();
 
 			List<Competencia> list = Optional.ofNullable(entity.getCompetencias()).orElse(Collections.emptyList());
 			this.competencias = list.stream()
 				.map(item -> item.getTag())
 				.collect(Collectors.toList());
+
+			/*List<ContatoColaborador> contatos = Optional.ofNullable(entity.getContatos()).orElse(Collections.emptyList());
+			this.contatos = contatos.stream()
+				.map(ContatoDTO::new)
+				.collect(Collectors.toList());*/
 		}
 	}
 

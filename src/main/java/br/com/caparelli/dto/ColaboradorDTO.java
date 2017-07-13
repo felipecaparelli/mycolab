@@ -3,7 +3,7 @@ package br.com.caparelli.dto;
 import java.io.Serializable;
 
 import br.com.caparelli.model.Colaborador;
-import lombok.Getter;
+import lombok.Data;
 
 /**
  * <b>Definicao</b>: DTO do colaborador.
@@ -14,7 +14,7 @@ import lombok.Getter;
  * @date	11 de jul de 2017
  *
  */
-@Getter
+@Data
 public class ColaboradorDTO implements Serializable {
 
 	private static final long serialVersionUID = -609154102223809333L;

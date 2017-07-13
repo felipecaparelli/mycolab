@@ -22,6 +22,20 @@ public class MessageUtils {
 
 	private static ResourceBundle msgs;
 
+	/* i18n */
+
+	public static void infoI18n(String messageKey) {
+        addMessage(FacesMessage.SEVERITY_INFO, INFO_TITLE, msg(messageKey));
+    }
+
+    public static void warnI18n(String messageKey) {
+    	addMessage(FacesMessage.SEVERITY_WARN, WARN_TITLE, msg(messageKey));
+    }
+
+    public static void errorI18n(String messageKey) {
+    	addMessage(FacesMessage.SEVERITY_ERROR, ERROR_TITLE, msg(messageKey));
+    }
+
 	/* jsf */
 
     public static void info(String message) {

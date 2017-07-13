@@ -32,5 +32,12 @@ public enum TipoContato {
 		return icone;
 	}
 
+	public static TipoContato getByIcone(String icone) {
+		for (TipoContato tipo : TipoContato.values()) {
+			if(tipo.icone.equals(icone)) return tipo;
+		}
+		return null;
+	}
+
 
 }
